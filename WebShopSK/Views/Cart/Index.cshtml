@@ -1,0 +1,26 @@
+﻿@{
+	ViewData["Title"] = "Cart";
+    var cartItems = ViewBag.CartItems;
+}
+
+@if (cartItems.Count == 0)
+{
+    <div class="text-center">
+        <h1>Your cart is empty!</h1>
+        <hr />
+        <a class="btn btn-primary btn-lg float-lg-start" asp-controller="Home" asp-action="Products"> Continue shopping</a>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <h3>Cart items:</h3>
+    </div>
+    <br />
+    <partial name="_CartItems" model="@cartItems" />
+
+    <div class="d-flex justify-content-between">
+        <a class="btn btn-primary btn-lg" asp-controller="Home" asp-action="Products">Continue shopping</a>
+        <a class="btn btn-success btn-lg" asp-controller="Home" asp-action="Order">Order products</a>
+    </div>
+}
